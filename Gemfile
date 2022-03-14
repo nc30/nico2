@@ -37,8 +37,8 @@ gem 'rails-i18n'
 gem 'annotate'
 gem 'rack-cors'
 gem 'bcrypt'
-gem 'qiita-markdown'
-gem 'github-linguist'
+#gem 'qiita-markdown'
+#gem 'github-linguist'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
