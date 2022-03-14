@@ -1,0 +1,57 @@
+<nav class="center">[<a href="/">トップ</a>] [<a href="/events/<%= @event.id %>/">詳細案内</a>] [<a href="/events/<%= @event.id %>/entries">参加者名簿</a>] [<a href="/events/<%= @event.id %>/entry">参加申込み</a>] [幹事室]</nav>
+
+<header>
+  <div class="c">
+    <h1 id="topTitle"><%= @event.title %> : 幹事室</h1>
+  </div>
+</header>
+
+
+<div class="c">
+<%= form_with url: "/events", method: :post do |form| %>
+
+  <table class="entryFormTable" >
+    <tr>
+      <td><%= form.label :title, "タイトル" %></td>
+      <td><%= form.text_field :title, size: 40, maxlength: 20, value: @event.title, required: true %>（20字以内）　<span class="red">※必須</span></td>
+    </tr>
+
+    <tr>
+      <td><%= form.label :owner, "主催者" %></td>
+      <td><%= form.text_field :owner, size: 40, maxlength: 20, value: @event.owner, required: true %>（20字以内）　<span class="red">※必須</span></td>
+    </tr>
+
+    <tr>
+      <td><%= form.label :contact_to, "連絡先" %></td>
+      <td><%= form.text_field :contact_to, value: @event.contact_to, required: true %>（20字以内）　<span class="red">※必須</span></td>
+    </tr>
+    <tr>
+      <td><%= form.label :x_day, "開催日" %></td>
+      <td><%= form.text_field :x_day, type: :date, value: @event.x_day %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :set_time, "集合時間" %></td>
+      <td><%= form.text_field :set_time %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :break_time, "解散時間" %></td>
+      <td><%= form.text_field :break_time, value: @event.break_time %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :limit, "募集定員" %></td>
+      <td><%= form.text_field :limit, type: :number, min: 0, value: @event.limit %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :limit, "地域" %></td>
+      <td><%= form.select :limit, [1, 2] %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :password, "パスワード" %></td>
+      <td><%= form.text_field :password, type: :password %></td>
+    </tr>
+  </table>
+  <p>登録をした後、内容に修正があれば，参加者名簿の画面から登録者自身で修正できます。</p>
+  <%= form.submit "参加登録します" %>
+<% end %>
+
+</div>

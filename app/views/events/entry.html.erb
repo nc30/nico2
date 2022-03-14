@@ -1,0 +1,55 @@
+<nav class="center">[<a href="/">トップ</a>] [<a href="/events/<%= @event.id %>/">詳細案内</a>] [<a href="/events/<%= @event.id %>/entries">参加者名簿</a>] [参加申込み] [<a href="/events/<%= @event.id %>/kanji">幹事室</a>]</nav>
+
+<header>
+  <div class="c">
+    <h1 id="topTitle"><%= @event.title %>：参加登録フォーム</h1>
+  </div>
+</header>
+
+<div class="c">
+<%= form_with url: "/events/#{@event.id}/entries", method: :post do |form| %>
+  <input type="radio" checked /> <a href="/events/<%= @event.id %>/" >詳細案内</a>を確認し、企画に参加する場合はこちらのフォームから登録して下さい。必須以外は未入力でもOKです。
+  <table class="entryFormTable" >
+    <tr>
+      <td><%= form.label :name, "ハンドルネーム" %></td>
+      <td><%= form.text_field :name, size: 40, maxlength: 20, required: true %>（20字以内）　<span class="red">※必須</span></td>
+    </tr>
+    <tr>
+      <td><%= form.label :kana, "読み" %></td>
+      <td><%= form.text_field :kana, size: 40, maxlength: 20 %>（全角ひらがな30字以内）　<span class="red">※必須</span></td>
+    </tr>
+    <tr>
+      <td><%= form.label :bike, "車種" %></td>
+      <td><%= form.text_field :bike, size: 40, maxlength: 20, required: true %>（20字以内）例）CB400SF<br/></td>
+    </tr>
+    <tr>
+      <td><%= form.label :maker, "メーカー" %></td>
+      <td><%= form.select :maker, ["ホンダ", "ヤマハ", "カワサキ", "スズキ", "ハーレー", "BMW", "DUCATI", "トライアンフ", "KTM", "MVアグスタ", "アプリリア", "その他"].map.with_index{|a,i| [a, i]} %>
+メーカーが無い場合は空欄で登録後、名簿の変更より手動で入力して下さい。</td>
+    </tr>
+    <tr>
+      <td><%= form.label :status, "参加形態" %><%= @entry.status.to_i %></td>
+      <td><%= form.select :status, ["○参加", "△仮参加（未定）", "☓不参加"].map.with_index{|a,i| [a, i]} %><br/>
+※参加できるかどうか分らない場合は，「仮参加」で登録して下さい。<br/>
+　 参加か不参加かが確定したら，参加者名簿の変更画面で登録内容を修正して下さい。<br/>
+<br/>
+<b>※人数制限がある場合、制限に達していれば 「●参加」 キャンセル待順に並ぶことになります。<br/>
+　 早期登録でも仮参加では参加人数には含まれておらず、キャンセル待順にも並んでいません。<br/>
+　 後から登録した人でも 「○参加」 意思のある人が優先です。</b><br/>
+　　<span class="red">（人数制限有→仮参加＝未登録と同じ）</span></td>
+    </tr>
+    <tr>
+      <td><%= form.label :comment, "コメントなど" %></td>
+      <td><%= form.text_field :comment %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :password, "変更パスワード設定" %></td><td><%= form.text_field :password, value: "1234", required: true %><br/>登録内容の変更時に使用します。半角英数字で8文字以内。<br/>
+設定不要でしたら『1234』を使用して下さい。<br/>
+登録後のパスワード変更はできません。</td>
+    </tr>
+  </table>
+  <p>登録をした後、内容に修正があれば，参加者名簿の画面から登録者自身で修正できます。</p>
+  <%= form.submit "参加登録します" %>
+<% end %>
+
+</div>

@@ -1,0 +1,316 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+* {
+}
+
+body{
+    margin: 0;
+    padding: 0;
+
+    background-color: #E4FEE7;
+    color: #1E5A46;
+}
+
+li {
+    list-style: none
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+td,
+th {
+  padding: 0;
+  border: none;
+}
+
+a {
+    color: rgb(0, 128, 255);
+    text-decoration: underline;
+}
+
+hr {
+    border-color: #5A9682;
+}
+
+.tweetButton {
+    svg {
+        width: 15px;
+        fill: #fff;
+    }
+    cusor: pointer;
+    font-size: 15px;
+    background-color: #00acee;
+    border:none;
+    color: #fff;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+#topTitle {
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: #78B4A0;
+    font-size: 20px;
+}
+
+.mainTable {
+    border: 2px solid #5A9682;
+    background-color: #fff;
+    font-size: 14px;
+    color: #114c38;
+    margin: auto;
+
+    // Border
+    th, td {
+        &:nth-child(n+2) {
+            border-left: 1px solid #5A9682;
+        }
+    }
+
+    tbody td {
+        border-top: 1px solid #5A9682;
+    }
+
+    // BG
+    thead tr,
+    tr:nth-child(2n) {
+        background-color: #F0F0F0;
+    }
+
+
+    // Padding
+    thead th {
+        text-align: center;
+        padding: 1px;
+    }
+
+    tbody td {
+        padding: 3px;
+    }
+}
+
+.eventTable {
+    border: 2px solid #5A9682;
+    background-color: #fff;
+    font-size: 14px;
+    color: #114c38;
+    width: auto;
+    margin: auto;
+
+    td {
+        padding: 1px 5px;
+
+        &:nth-child(2n-1) {
+            text-align: right;
+        }
+
+        &:nth-child(1n+1){
+            border-left: 1px solid #5A9682;
+        }
+        &:nth-child(1n+1) {
+            border-top: 1px solid #5A9682;
+        }
+    }
+
+    tr {
+        &:nth-child(2n) td:nth-child(-n+2) {
+            background-color: #F0F0F0;
+        }
+        &:nth-child(2n+1) td:nth-child(n+3) {
+            background-color: #F0F0F0;
+        }
+    }
+}
+
+.center {
+    text-align: center;
+}
+.left {
+    text-align: left;
+}
+.right {
+    text-align: right;
+}
+.red {
+    color: red;
+}
+
+.entryFormTable {
+    border: 3px solid #5A9682;
+    font-size: 13px;
+    margin: auto;
+
+    label {
+        font-weight: bold;
+        display: block;
+        width:100%;
+        height:100%;
+    }
+
+    td {
+        padding: 5px;
+        &:nth-child(n+2){
+            border-left: 1px solid #5A9682;
+        }
+    }
+
+    tr:nth-child(n+2) {
+        border-top: 1px solid #5A9682;
+    }
+}
+
+.entryTable {
+    border: 2px solid #5A9682;
+    background-color: #fff;
+    font-size: 14px;
+    color: #114c38;
+    margin: auto;
+    width: 100%;
+
+    th, td{
+        padding: 1px 5px;
+        border-top: 1px solid #5A9682;
+        border-left: 1px solid #5A9682;
+        border-bottom: none;
+    }
+
+    th {
+        padding: 5px;
+        &:nth-child(n+2){
+            border-left: 1px solid #5A9682;
+        }
+        // &:nth-child(1n+1) {
+        //     border-top: 1px solid #5A9682;
+        // }
+    }
+
+    tr.filled {
+        background-color: #F0F0F0;
+        th {
+            text-align: center;
+        }
+    }
+}
+
+.eventBody {
+    margin: auto;
+    border: 2px solid #5A9682;
+    background-color: #fff;
+    color: #5A9682;
+    padding: 5px;
+
+    font-size: 14px;
+}
+
+.mc {
+    // min-height: 100vh;
+    padding-bottom: 3em;
+}
+
+.important_message {
+    border: solid red 3px;
+    background-color: #fff;
+    color: red;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 18px;
+}
+
+#footer {
+    width: 100%;
+    min-height: 10vh;
+    bottom: 0;
+    padding: 2em;
+
+    .copylight {
+        font-size:1em;
+    }
+
+    svg {
+        fill: #333;
+    }
+
+    .makers {
+        a {
+            display: block;
+            width: 3em;
+            height: 3em;
+        }
+        li {
+            margin: 0;
+            display: inline-block;
+        }
+        .honda {
+            background-color: red;
+        }
+        .yamaha {
+            background-color: #2a6ae7;
+        }
+        .suzuki {
+            background-color: yellow;
+        }
+        .kawasaki {
+            background-color: #69bd27;
+        }
+        .harley {
+            background-color: #333;
+        }
+        .bmw {
+            background-color: #333;
+        }
+        .triump {
+            background-color: #333;
+        }
+        .ktm {
+            background-color: #ff6900;
+        }
+        .avagusta {
+            background-color: #04ac28;
+        }
+        .aprilia {
+            background-color: #ff2e00;
+        }
+    }
+}
+
+.subnav {
+    background-color: #999;
+    .container {
+        background-color: #fff;
+    }
+    li {
+        display:inline;
+
+        &.active {
+            background-color: #333;
+            color: #fff;
+        }
+    }
+
+}
+
+.credit {
+    svg {
+        fill: #fff;
+    }
+}

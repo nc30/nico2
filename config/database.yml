@@ -1,0 +1,23 @@
+default: &default
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: db/development.sqlite3
+
+test:
+  <<: *default
+  database: db/test.sqlite3
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  timeout: 5000
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= Rails.application.credentials.database[:production][:host] if Rails.application.credentials.database %>
+  port: <%= Rails.application.credentials.database[:production][:port] if Rails.application.credentials.database %>
+  database: <%= Rails.application.credentials.database[:production][:database] if Rails.application.credentials.database %>
+  username: <%= Rails.application.credentials.database[:production][:username] if Rails.application.credentials.database %>
+  password: <%= Rails.application.credentials.database[:production][:password] if Rails.application.credentials.database %>

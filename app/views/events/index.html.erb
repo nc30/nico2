@@ -1,0 +1,42 @@
+<header>
+  <div class="c">
+    <h1 id="topTitle">ツーリング企画一覧GENERIC（ツーリング、キャンプ、バイク、自転車等）</h1>
+  </div>
+
+  <nav class="center">[<a href="/events/new">新規追加</a>]</nav>
+</header>
+
+<div class="c">
+  <table class="mainTable">
+    <thead>
+      <tr>
+        <th>企画名称</th>
+        <th>開催日</th>
+        <th>地域</th>
+        <th>開催地</th>
+        <th>状態</th>
+        <th>概要</th>
+        <th>詳細</th>
+        <th>名簿</th>
+        <th>申込</th>
+        <th>幹事室</th>
+      </th>
+    </thead>
+    <tbody>
+<% @events.each do |event| %>
+      <tr>
+        <td><%= event.title %></a></td>
+        <td><%= l(event.x_day) if event.x_day %></td>
+        <td class="center"><%= event.locale %></td>
+        <td class="center"><%= event.place %></td>
+        <td><%= event.status %></td>
+        <td><%= event.description %></td>
+        <td class="center"><a href="/events/<%= event.id %>/" >詳細</a></td>
+        <td class="center"><a href="/events/<%= event.id %>/entries" >名簿</a></td>
+        <td class="center"><a href="/events/<%= event.id %>/entry/" >申込</a></td>
+        <td class="center"><a href="/events/<%= event.id %>/kanji" >幹事室</a></td>
+      </tr>
+<% end %>
+    </tbody>
+  </table>
+</div>
