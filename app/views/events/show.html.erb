@@ -51,6 +51,6 @@
   <nav class="center">[<a href="/events/<%= @event.id %>/entries">参加者名簿</a>]　[<a href="/events/<%= @event.id %>/entry">参加申し込み</a>]</nav>
   <p class="center">【 <span class="red"><%= l(@event.updated_at, format: :short) %></span>更新】</p>
   <div class="eventBody">
-    <%= qiita_markdown @event.body %>
+    <%= @event.body.to_s.html_safe %>
   </div>
 </div>

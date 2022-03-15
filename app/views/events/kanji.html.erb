@@ -6,52 +6,64 @@
   </div>
 </header>
 
-
 <div class="c">
-<%= form_with url: "/events", method: :post do |form| %>
-
-  <table class="entryFormTable" >
-    <tr>
-      <td><%= form.label :title, "タイトル" %></td>
-      <td><%= form.text_field :title, size: 40, maxlength: 20, value: @event.title, required: true %>（20字以内）　<span class="red">※必須</span></td>
-    </tr>
-
-    <tr>
-      <td><%= form.label :owner, "主催者" %></td>
-      <td><%= form.text_field :owner, size: 40, maxlength: 20, value: @event.owner, required: true %>（20字以内）　<span class="red">※必須</span></td>
-    </tr>
-
-    <tr>
-      <td><%= form.label :contact_to, "連絡先" %></td>
-      <td><%= form.text_field :contact_to, value: @event.contact_to, required: true %>（20字以内）　<span class="red">※必須</span></td>
-    </tr>
-    <tr>
-      <td><%= form.label :x_day, "開催日" %></td>
-      <td><%= form.text_field :x_day, type: :date, value: @event.x_day %></td>
-    </tr>
-    <tr>
-      <td><%= form.label :set_time, "集合時間" %></td>
-      <td><%= form.text_field :set_time %></td>
-    </tr>
-    <tr>
-      <td><%= form.label :break_time, "解散時間" %></td>
-      <td><%= form.text_field :break_time, value: @event.break_time %></td>
-    </tr>
-    <tr>
-      <td><%= form.label :limit, "募集定員" %></td>
-      <td><%= form.text_field :limit, type: :number, min: 0, value: @event.limit %></td>
-    </tr>
-    <tr>
-      <td><%= form.label :limit, "地域" %></td>
-      <td><%= form.select :limit, [1, 2] %></td>
-    </tr>
-    <tr>
-      <td><%= form.label :password, "パスワード" %></td>
-      <td><%= form.text_field :password, type: :password %></td>
-    </tr>
-  </table>
-  <p>登録をした後、内容に修正があれば，参加者名簿の画面から登録者自身で修正できます。</p>
-  <%= form.submit "参加登録します" %>
+  <%= form_with url: "/events/#{@event.id}", method: :put do |form| %>
+    <table class="entryFormTable create" >
+      <tr>
+        <td><%= form.label :title, "名前" %></td>
+        <td><%= form.text_field :title, value: @event.title, required: true %> <span class="red">※必須</span></td>
+      </tr>
+      <tr>
+        <td><%= form.label :owner, "主催者" %></td>
+        <td><%= form.text_field :owner, value: @event.owner, required: true %> <span class="red">※必須</span></td>
+      </tr>
+      <tr>
+        <td><%= form.label :x_day, "開催日" %></td>
+        <td><%= form.text_field :x_day, type: :date, value: @event.x_day, required: true %> <span class="red">※必須</span></td>
+      </tr>
+      <tr>
+        <td><%= form.label :locale, "地域" %></td>
+        <td><%= form.select :locale, ["北海道", "東北", "関東・甲信越", "東海・中部・北陸", "関西", "中国・四国", "九州・沖縄", "リモート"].map.with_index{|a,i| [a, i]}, selected: @event.locale %></td>
+      </tr>
+      <tr>
+        <td><%= form.label :place, "開催地" %></td>
+        <td><%= form.text_field :place, value: "開催地", value: @event.place, required: true %> <span class="red">※必須</span></td>
+      </tr>
+      <tr>
+        <td><%= form.label :setup_time, "集合時刻" %></td>
+        <td><%= form.text_field :setup_time, value: "10:00", value: @event.setup_time, required: true %> <span class="red">※必須</span></td>
+      </tr>
+      <tr>
+        <td><%= form.label :break_time, "解散時刻" %></td>
+        <td><%= form.text_field :break_time, value: @event.break_time %></td>
+      </tr>
+      <tr>
+        <td><%= form.label :setup_place, "集合場所" %></td>
+        <td><%= form.text_field :setup_place, value: @event.setup_place %><br/>
+※明確にわかりやすい表現が望ましいです。「例:セブン-イレブン 伊勢市楠部町店」<br/>
+本文内にgoogleMapのURLなども載せるとベターです。<br/>
+※キャパシティや周りへの迷惑にならないような場所を選びましょう</td>
+      </tr>
+      <tr>
+        <td><%= form.label :contact_to, "お問い合わせ先" %></td>
+        <td><%= form.text_field :contact_to, value: @event.contact_to, style: "width: 100%" %><br/>
+※幹事のTwitterアカウントでも載せとけばいいと思います</td>
+      </tr>
+      <tr>
+        <td><%= form.label :status, "状態" %></td>
+        <td><%= form.select :status, ["開催予定", "未定", "審議中", "中止"].map.with_index{|a,i| [a, i]}, selected: @event.status %></td>
+      </tr>
+      <tr>
+        <td><%= form.label :description, "短い概要" %></td>
+        <td><%= form.text_area :description, value: @event.description, style: "width: 100%;" %><br/>
+※一覧画面で表示される１行程度の概要です</td>
+      </tr>
+      <tr>
+        <td><%= form.label :body, "詳細" %></td>
+        <td><%= form.text_area :body, style: "width: 100%;", value: @event.body, rows: 30 %></td>
+      </tr>
+    </table>
+  <%= form.submit "修正する" %>
 <% end %>
 
 </div>

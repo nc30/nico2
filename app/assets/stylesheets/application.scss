@@ -155,6 +155,10 @@ hr {
     color: red;
 }
 
+textarea {
+    width: 100%;
+}
+
 .entryFormTable {
     border: 3px solid #5A9682;
     font-size: 13px;
@@ -199,9 +203,6 @@ hr {
         &:nth-child(n+2){
             border-left: 1px solid #5A9682;
         }
-        // &:nth-child(1n+1) {
-        //     border-top: 1px solid #5A9682;
-        // }
     }
 
     tr.filled {

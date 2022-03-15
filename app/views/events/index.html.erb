@@ -1,6 +1,7 @@
 <header>
   <div class="c">
     <h1 id="topTitle">ツーリング企画一覧GENERIC（ツーリング、キャンプ、バイク、自転車等）</h1>
+    <p>ニコツー企画の本家が見つからなくなったので作りました</p>
   </div>
 
   <nav class="center">[<a href="/events/new">新規追加</a>]</nav>
@@ -27,9 +28,9 @@
       <tr>
         <td><%= event.title %></a></td>
         <td><%= l(event.x_day) if event.x_day %></td>
-        <td class="center"><%= event.locale %></td>
+        <td class="center"><%= event.locale_text %></td>
         <td class="center"><%= event.place %></td>
-        <td><%= event.status %></td>
+        <td><%= event.status_text %></td>
         <td><%= event.description %></td>
         <td class="center"><a href="/events/<%= event.id %>/" >詳細</a></td>
         <td class="center"><a href="/events/<%= event.id %>/entries" >名簿</a></td>

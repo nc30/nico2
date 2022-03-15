@@ -14,12 +14,12 @@
     <thead>
       <tr><th colspan="3" rowspan="3" class="center">開催日</th><th colspan="2" class="right">○計</th><th class="right"><%= @event.joined_count %></th><th rowspan="3" colspan="2">【幹 事】<span class="red"><%= @event.owner %></span><br/>【定 員】<span class="red"><%= @event.limit.nil? || @event.limit < 1 ? "無制限" : "#{@event.limit}名" %></span><br/>【詳 細】<span class="red"><%= l(@event.updated_at, format: :short) %> 更新</span></th></tr>
       <tr><th colspan="2" class="right">●仮計</th><th class="right"><%= @event.reserved_count %></th></tr>
-      <tr><th colspan="2" class="right">総計</th><th class="right"><%= @event.entries.length %></th></tr>
+      <tr><th colspan="2" class="right">総計</th><th class="right"><%= @event.all_count %></th></tr>
       <tr class="filled"><th></th><th>ハンドルネーム</th><th>変更</th><th>車種</th><th>メーカー</th><th>状態</th><th style="width: 40%;">一言</th><th style="width: 10%;">登録/更新日</th></tr>
     </thead>
     <tbody>
 <% b=nil; @entries.each do |entry| %>
-      <tr><td class="center"><%= entry.index if b != entry.index %></td><td><%= entry.name %></td><td class="center"><a href="<%= "/events/#{@event.id}/entries/#{entry.id}/edit" %>" >変更</a></td><td><%= entry.bike %></td><td class="center"><%= entry.maker_string %></td><td class="center"><%= entry.status_short %></td><td><%= entry.comment %></td><td class="center"><%= l(entry.created_at) %></td></tr>
+      <tr><td class="center"><%= entry.index if b != entry.index %></td><td><span class="overhanded" title="<%= entry.kana %>"><%= entry.name %></span></td><td class="center"><a href="<%= "/events/#{@event.id}/entries/#{entry.id}/edit" %>" >変更</a></td><td><%= entry.bike %></td><td class="center"><%= entry.maker_string %></td><td class="center"><%= entry.status_short %></td><td><span class="overhanded" title="<%= entry.comment %>"><%= entry.comment %></span></td><td class="center"><%= l(entry.created_at) %></td></tr>
 <% b=entry.index; end %>
     </tbody>
   </table>

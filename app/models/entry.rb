@@ -29,9 +29,9 @@ class Entry < ApplicationRecord
 
   def set_index
     if kana.length > 0 && ["あ", "い", "う", "え", "お", "か", "き", "く", "け", "こ", "さ", "し", "す", "せ", "そ", "た", "ち", "つ", "て", "と", "な", "に", "ぬ", "ね", "の", "は", "ひ", "ふ", "へ", "ほ", "ま", "み", "む", "め", "も", "や", "ゆ", "よ", "わ", "を", "ん", "英"].include?(kana[0])
-      index = kana[0]
+      self.index = kana[0]
     else
-      index = "英"
+      self.index = "英"
     end
   end
 
@@ -44,7 +44,7 @@ class Entry < ApplicationRecord
   end
 
   def status_short
-    ["○", "△", "×", "●"][status]
+    ["○", "仮", "×", "●"][status]
   end
 
   def maker_name

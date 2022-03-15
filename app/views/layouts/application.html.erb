@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head prefix="og: http://ogp.me/ns# website: http://ogp.me/ns/website#">
     <title>ニコツー企画一覧</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <meta property="og:title" content="ニコニコツーリング企画一覧" />
-    <meta property="og:type" content="ページの種類" />
-    <meta property="og:url" content="https://touring.nitolab.com" />
-    <!-- <meta property="og:image" content="サムネイル画像のURL" /> -->
+<% if @event %>
+    <meta property="og:title" content="<%= @event.title %>" />
+    <meta property="og:type" content="article" />
     <meta property="og:site_name" content="ニコニコツーリング企画一覧" />
-    <!-- <meta property="og:description" content="ページのディスクリプション" /> -->
+    <meta property="og:description" content="<%= @event.description %>" />
+<% else %>
+    <meta property="og:title" content="ニコニコツーリング企画一覧" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://touring.nitolab.com" />
+    <meta property="og:site_name" content="ニコニコツーリング企画一覧" />
+    <meta property="og:description" content="ニコツーのツーリング企画" />
+<% end %>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ajusa/lit@latest/src/lit.css" />
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
   </head>
 
   <body>

@@ -25,9 +25,6 @@
 #  updated_at        :datetime         not null
 #
 class Event < ApplicationRecord
-  enum locale: ["北海道", "東北", "関東・甲信越", "中部・北陸", "関西", "中国・四国", "九州・沖縄", "リモート"]
-  enum status: ["開催予定", "未定", "審議中", "中止"]
-
   has_many :entries
 
   def joined_count
@@ -38,8 +35,16 @@ class Event < ApplicationRecord
     entries.count{|e|[1,4].include?(e.status)}
   end
 
+  def locale_text
+    ["北海道", "東北", "関東・甲信越", "中部・北陸", "関西", "中国・四国", "九州・沖縄", "リモート"][locale]
+  end
+
+  def status_text
+    ["開催予定", "未定", "審議中", "中止"][status]
+  end
+
   def all_count
-    entries.count{|e|[0,1,4].include?(e.status)}
+    entries.count{|e|[0,1,3].include?(e.status)}
   end
 
 end

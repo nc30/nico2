@@ -12,39 +12,11 @@
       <table class="entryFormTable create" >
         <tr>
           <td><%= form.label :title, "名前" %></td>
-          <td><%= form.text_field :title, value: "famas", required: true %> <span class="red">※必須</span></td>
+          <td><%= form.text_field :title, required: true %> <span class="red">※必須</span></td>
         </tr>
         <tr>
           <td><%= form.label :owner, "主催者" %></td>
-          <td><%= form.text_field :owner, value: "ownername", required: true %> <span class="red">※必須</span></td>
-        </tr>
-        <tr>
-          <td><%= form.label :place, "開催地" %></td>
-          <td><%= form.text_field :place, value: "開催地", required: true %> <span class="red">※必須</span></td>
-        </tr>
-        <tr>
-          <td><%= form.label :setup_time, "集合時刻" %></td>
-          <td><%= form.text_field :setup_time, value: "10:00", required: true %> <span class="red">※必須</span></td>
-        </tr>
-        <tr>
-          <td><%= form.label :break_time, "解散時刻" %></td>
-          <td><%= form.text_field :break_time %></td>
-        </tr>
-        <tr>
-          <td><%= form.label :setup_place, "集合場所" %></td>
-          <td><%= form.text_field :setup_place %></td>
-        </tr>
-        <tr>
-          <td><%= form.label :deadline, "募集締め切り" %></td>
-          <td><%= form.text_field :deadline %></td>
-        </tr>
-        <tr>
-          <td><%= form.label :contact_to, "お問い合わせ先" %></td>
-          <td><%= form.text_field :contact_to %></td>
-        </tr>
-        <tr>
-          <td><%= form.label :limit, "募集定員" %></td>
-          <td><%= form.text_field :limit, type: :number, min: 0 %></td>
+          <td><%= form.text_field :owner, required: true %> <span class="red">※必須</span></td>
         </tr>
         <tr>
           <td><%= form.label :x_day, "開催日" %></td>
@@ -55,24 +27,52 @@
           <td><%= form.select :locale, ["北海道", "東北", "関東・甲信越", "東海・中部・北陸", "関西", "中国・四国", "九州・沖縄", "リモート"].map.with_index{|a,i| [a, i]} %></td>
         </tr>
         <tr>
+          <td><%= form.label :place, "開催地" %></td>
+          <td><%= form.text_field :place, required: true %> <span class="red">※必須</span></td>
+        </tr>
+        <tr>
+          <td><%= form.label :setup_time, "集合時刻" %></td>
+          <td><%= form.text_field :setup_time, required: true %> <span class="red">※必須</span></td>
+        </tr>
+        <tr>
+          <td><%= form.label :break_time, "解散時刻" %></td>
+          <td><%= form.text_field :break_time %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :setup_place, "集合場所" %></td>
+          <td><%= form.text_field :setup_place %><br/>
+※明確にわかりやすい表現が望ましいです。「例:セブン-イレブン 伊勢市楠部町店」<br/>
+本文内にgoogleMapのURLなども載せるとベターです。<br/>
+※キャパシティや周りへの迷惑にならないような場所を選びましょう</td>
+        </tr>
+        <tr>
+          <td><%= form.label :contact_to, "お問い合わせ先" %></td>
+          <td><%= form.text_field :contact_to, style: "width: 100%" %><br/>
+※幹事のTwitterアカウントでも載せとけばいいと思います</td>
+        </tr>
+        <tr>
           <td><%= form.label :status, "状態" %></td>
           <td><%= form.select :status, ["開催予定", "未定", "審議中", "中止"].map.with_index{|a,i| [a, i]} %></td>
         </tr>
         <tr>
           <td><%= form.label :description, "短い概要" %></td>
-          <td><%= form.text_area :description, size: "60x2" %></td>
+          <td><%= form.text_area :description, style: "width: 100%;" %><br/>
+※一覧画面で表示される１行程度の概要です</td>
         </tr>
         <tr>
           <td><%= form.label :body, "詳細" %></td>
-          <td><%= form.text_area :body %></td>
+          <td><%= form.text_area :body, style: "width: 100%;", rows: 30 %></td>
         </tr>
         <tr>
           <td><%= form.label :password, "パスワード" %></td>
-          <td><%= form.text_field :password, type: :password, minlength: 4, value: "1234" %></td>
+          <td><%= form.text_field :password, type: :password, minlength: 4, required: true %> <span class="red">※必須</span><br/>
+<b>※編集する際に必要です。半角英数字4文字以上。<br/>
+</b>
+          </td>
         </tr>
       </table>
 
-      <%= form.submit "送信" %>
+      <%= form.submit "作る" %>
     <% end %>
   </div>
 </div>

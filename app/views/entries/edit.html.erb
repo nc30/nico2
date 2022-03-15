@@ -1,14 +1,13 @@
-<nav class="center">[<a href="/">トップ</a>] [<a href="/events/<%= @event.id %>/">詳細案内</a>] [<a href="/events/<%= @event.id %>/entries">参加者名簿</a>] [参加申込み] [<a href="/events/<%= @event.id %>/kanji">幹事室</a>]</nav>
+<nav class="center">[<a href="/">トップ</a>] [<a href="/events/<%= @event.id %>/">詳細案内</a>] [<a href="/events/<%= @event.id %>/entries">参加者名簿</a>] [<a href="/events/<%= @event.id %>/entry">参加申込み</a>] [<a href="/events/<%= @event.id %>/kanji">幹事室</a>]</nav>
 
 <header>
   <div class="c">
-    <h1 id="topTitle"><%= @event.title %>：参加登録フォーム</h1>
+    <h1 id="topTitle"><%= @event.title %>：参加修正フォーム</h1>
   </div>
 </header>
 
 <div class="c">
 <%= form_with url: "/events/#{@event.id}/entries/#{@entry.id}", method: :put do |form| %>
-  <input type="radio" checked /> <a href="/events/<%= @event.id %>/" >詳細案内</a>を確認し、企画に参加する場合はこちらのフォームから登録して下さい。必須以外は未入力でもOKです。
   <table class="entryFormTable" >
     <tr>
       <td><%= form.label :name, "ハンドルネーム" %></td>
@@ -40,7 +39,7 @@
     </tr>
     <tr>
       <td><%= form.label :comment, "コメントなど" %></td>
-      <td><%= form.text_field :comment, value: @entry.comment %></td>
+      <td><%= form.text_area :comment, value: @entry.comment, style: "width:100%" %></td>
     </tr>
     <tr>
       <td><%= form.label :password, "変更パスワード" %></td><td><%= form.text_field :password, required: true %><br/>登録時に登録したパスワードを入力してください。<br/>
@@ -48,7 +47,6 @@
     </tr>
   </table>
   <p>登録をした後、内容に修正があれば，参加者名簿の画面から登録者自身で修正できます。</p>
-  <%= form.submit "参加登録します" %>
+  <%= form.submit "修正します" %>
 <% end %>
-
 </div>

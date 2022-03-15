@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :events, only: [:show, :create, :update] do
     get 'entry', to: 'events#entry'
     get 'kanji', to: 'events#kanji'
-    get 'login', to: 'events#login'
+    post 'login', to: 'events#login'
 
     resources :entries, only: [:index, :show, :create, :update] do
       get 'edit', to: 'entries#edit'

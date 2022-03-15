@@ -1,0 +1,16 @@
+<header>
+  <div class="c">
+    <h1 id="topTitle"><%= @event.title %> : 幹事室</h1>
+  </div>
+</header>
+
+<div class="c center" class="padding-top: 3em;">
+<% if @msg %>
+<span class="red" ><%= @msg %></span>
+<% end %>
+<%= form_with url: "/events/#{@event.id}/login", method: :post do |form| %>
+  <%= form.label :password, "変更パスワード :" %>
+  <%= form.text_field :password, type: :password, required: true %>
+  <%= form.submit "ログイン" %>
+<% end %>
+</div>
